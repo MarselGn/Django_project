@@ -23,10 +23,6 @@ def home(requests):
     return render(requests, 'catalog/home.html', context)
 
 
-class Products:
-    pass
-
-
 def category_products(requests, pk):
     category_item = Category.objects.get(pk=pk)
     context = {
