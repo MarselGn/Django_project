@@ -1,0 +1,20 @@
+{% extends 'catalog/base.html' %}
+
+{% block content%}
+<div class="col-12">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <p>Хотите удалить публикацию "{{ object.title }}"</p>
+                        <button type="submit" class="btn btn-sm btn-outline-success">Подтвердить</button>
+                        <a href="{% url 'catalog:list' %}" class="btn btn-warning">Отмена</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
