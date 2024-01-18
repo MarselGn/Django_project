@@ -2,6 +2,9 @@
 
 {% block content%}
 <div class="row">
+    <div class="col-12">
+        <a href="{% url 'catalog:product_create' category_pk %}" type="button" class="btn btn-sm btn-outline-secondary">Добавить товар</a>
+    </div>
     {% for object in object_list%}
     <div class="col-md-4">
         <div class="card mb-4 box-shadow">

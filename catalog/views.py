@@ -4,15 +4,12 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, TemplateView, CreateView, DetailView, UpdateView, DeleteView
 from pytils.translit import slugify
 
+from catalog.forms import ProductForm
 from catalog.models import Category, Product, Blog
 
 
-def contacts(requests):
-    return render(requests, 'catalog/contacts.html')
-
-
-class ProductListView(ListView):
-    model = Product
+class CategoryListView(ListView):
+    model = Category
     extra_context = {
         'title': 'Наш ассортимент'
     }
@@ -20,17 +17,17 @@ class ProductListView(ListView):
 
 class HomeView(TemplateView):
     template_name = 'catalog/home.html'
-    xtra_context = {
+    extra_context = {
         'title': 'Все категории техники'
     }
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
-        context_data['object_list'] = Category.objects.all()
+        context_data['object_list'] = Category.objects.all()[:3]
         return context_data
 
 
-class CategoryListView(ListView):
+class ProductListView(ListView):
     model = Product
 
     def get_queryset(self):
@@ -39,11 +36,18 @@ class CategoryListView(ListView):
         return queryset
 
     def get_context_data(self, *args, **kwargs):
-        category_item = Category.objects.get(pk=self.kwargs.get('pk'))
         context_data = super().get_context_data(*args, **kwargs)
+
+        category_item = Category.objects.get(pk=self.kwargs.get('pk'))
+        context_data['category_pk'] = category_item.pk,
         context_data['title'] = f'Все наши {category_item.category_name}'
 
         return context_data
+
+
+class ProductCreateView(CreateView):
+    model = Product
+    form_class = ProductForm
 
 
 class BlogCreateView(CreateView):
@@ -98,3 +102,7 @@ class BlogDetailView(DetailView):
 class BlogDeleteView(DeleteView):
     model = Blog
     success_url = reverse_lazy('catalog:list')
+
+
+def contacts(requests):
+    return render(requests, 'catalog/contacts.html')
