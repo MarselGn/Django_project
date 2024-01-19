@@ -2,7 +2,7 @@
 
 {% block content%}
 <div class="row">
-    <div class="col-12">
+    <div class="col-12 mb-4">
         <a href="{% url 'catalog:product_create' category_pk %}" type="button" class="btn btn-sm btn-outline-secondary">Добавить товар</a>
     </div>
     {% for object in object_list%}
@@ -10,11 +10,10 @@
         <div class="card mb-4 box-shadow">
             <div class="card-body">
                 <p class="card-text">{{ object.product_name }}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">К товару</button>
-                    </div>
-                </div>
+            </div>
+            <div class="card-footer">
+                 <a class="btn btn-link" href="{% url 'catalog:product_update' object.pk%}">изменить </a>
+                 <a class="btn btn-sm btn-outline-danger" href="{% url 'catalog:product_delete' object.pk%}">удалить </a>
             </div>
         </div>
     </div>
