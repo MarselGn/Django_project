@@ -1,20 +1,7 @@
 [
   {
     "model": "catalog.product",
-    "pk": 1,
-    "fields": {
-      "product_name": "Видеокарта KFA2 GeForce RTX 4070 Ti",
-      "product_content": "холодная",
-      "product_image": "catalog/Без_названия.jpg",
-      "category": 1,
-      "price_for_one": 500,
-      "date_created": "2023-12-27T14:57:22.533Z",
-      "date_last_change": "2023-12-27T14:57:22.533Z"
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 2,
+    "pk": 11,
     "fields": {
       "product_name": "Видеокарта MSI GeForce RTX 4070 Ti GAMING X SLIM",
       "product_content": "производительная",
@@ -22,12 +9,12 @@
       "category": 1,
       "price_for_one": 550,
       "date_created": "2023-12-27T15:00:35.740Z",
-      "date_last_change": "2023-12-27T15:00:35.740Z"
+      "date_last_change": "2024-01-19T12:13:57.160Z"
     }
   },
   {
     "model": "catalog.product",
-    "pk": 3,
+    "pk": 12,
     "fields": {
       "product_name": "Игровой товар Процессор Intel Core i5-12400F",
       "product_content": "холодный",
@@ -40,7 +27,7 @@
   },
   {
     "model": "catalog.product",
-    "pk": 4,
+    "pk": 13,
     "fields": {
       "product_name": "Процессор AMD Ryzen 7 5800X",
       "product_content": "производительная",
@@ -48,7 +35,20 @@
       "category": 2,
       "price_for_one": 250,
       "date_created": "2023-12-27T15:03:03.944Z",
-      "date_last_change": "2023-12-27T15:03:03.944Z"
+      "date_last_change": "2024-01-19T12:18:11.015Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 15,
+    "fields": {
+      "product_name": "hhh",
+      "product_content": "jjkj",
+      "product_image": "",
+      "category": 3,
+      "price_for_one": 12,
+      "date_created": "2024-01-19T09:45:16.160Z",
+      "date_last_change": "2024-01-19T12:57:47.093Z"
     }
   },
   {
@@ -65,6 +65,104 @@
     "fields": {
       "category_name": "Процессоры",
       "category_content": "Центральное процессорное устройство"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "category_name": "Материнские платы",
+      "category_content": "для процессоров"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+      "category_name": "ssd диски",
+      "category_content": "быстрая запись"
+    }
+  },
+  {
+    "model": "catalog.blog",
+    "pk": 10,
+    "fields": {
+      "title": "test",
+      "body": "sss",
+      "image": "",
+      "date_created": "2024-01-15T21:55:06.383Z",
+      "count_views": 3,
+      "is_published": true,
+      "slug": "test"
+    }
+  },
+  {
+    "model": "catalog.blog",
+    "pk": 11,
+    "fields": {
+      "title": "test2",
+      "body": "fgdgsg",
+      "image": "",
+      "date_created": "2024-01-15T21:55:12.244Z",
+      "count_views": 9,
+      "is_published": true,
+      "slug": ""
+    }
+  },
+  {
+    "model": "catalog.blog",
+    "pk": 12,
+    "fields": {
+      "title": "test3",
+      "body": "test3",
+      "image": "",
+      "date_created": "2024-01-15T22:21:01.642Z",
+      "count_views": 3,
+      "is_published": true,
+      "slug": "test3"
+    }
+  },
+  {
+    "model": "catalog.blog",
+    "pk": 13,
+    "fields": {
+      "title": "новый тест",
+      "body": "ппп",
+      "image": "",
+      "date_created": "2024-01-15T22:21:24.494Z",
+      "count_views": 2,
+      "is_published": true,
+      "slug": "novyij-test"
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 1,
+    "fields": {
+      "product": 11,
+      "number_version": 1,
+      "version_name": "Byg",
+      "is_activated": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 2,
+    "fields": {
+      "product": 13,
+      "number_version": 1,
+      "version_name": "павпва",
+      "is_activated": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 3,
+    "fields": {
+      "product": 15,
+      "number_version": 1,
+      "version_name": "ff",
+      "is_activated": true
     }
   }
 ]
