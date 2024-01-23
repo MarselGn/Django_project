@@ -4,7 +4,12 @@ from users.models import User
 
 
 class UserForm(UserCreationForm):
-
     class Meta:
         model = User
         fields = ('email', 'password1', 'password2')
+
+
+class PasswordForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = 'email'
