@@ -6,7 +6,7 @@ from catalog.models import Product, Version
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('product_name', 'product_content', 'product_image', 'price_for_one')
+        exclude = ('owner',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

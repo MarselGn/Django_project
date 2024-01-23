@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 NULLABLE = {'null': True, 'blank': True}
@@ -8,9 +9,11 @@ class Product(models.Model):
     product_content = models.TextField(verbose_name='описание')
     product_image = models.ImageField(upload_to='catalog/', **NULLABLE)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
-    price_for_one = models.IntegerField(verbose_name='цена')
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_last_change = models.DateTimeField(auto_now=True)
+    price_for_one = models.IntegerField(verbose_name='цена', **NULLABLE)
+    date_created = models.DateTimeField(auto_now_add=True, **NULLABLE)
+    date_last_change = models.DateTimeField(auto_now=True, **NULLABLE)
+
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE, verbose_name='владелец')
 
     def __str__(self):
         return f'{self.product_name} {self.price_for_one}'

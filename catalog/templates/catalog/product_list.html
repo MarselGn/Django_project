@@ -10,6 +10,7 @@
         <div class="card mb-4 box-shadow">
             <div class="card-body">
                 <p class="card-text">{{ object.product_name }}</p>
+                <span class="text-muted">{{ object.owner|default:'Без пользователя' }}</span>
             </div>
             <div class="card-footer">
                  <a class="btn btn-link" href="{% url 'catalog:product_update' object.pk%}">изменить </a>
