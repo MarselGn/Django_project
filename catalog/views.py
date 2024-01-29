@@ -65,6 +65,16 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        if self.object.owner != self.request.user:
+            product_fields = [fields_key for fields_key in form.fields.key()]
+            for field in product_fields:
+                if not self.request.user.has_perm(f'catalog.set_{field}'):
+                    del form.fields[field]
+
+        return form
+
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
         if self.object.owner != self.request.user:
