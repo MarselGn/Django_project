@@ -1,6 +1,7 @@
 import random
 
 from django.conf import settings
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView as BaseLoginView
 from django.contrib.auth.views import LogoutView as BaseLogoutView
 from django.core.mail import send_mail
@@ -20,7 +21,7 @@ class LogoutView(BaseLogoutView):
     pass
 
 
-class RegisterView(CreateView):
+class RegisterView(LoginRequiredMixin, CreateView):
     model = User
     form_class = UserRegisterForm
     success_url = reverse_lazy('catalog:index')
@@ -50,7 +51,7 @@ def generate_new_password(request):
     return redirect(reverse('catalog:index'))
 
 
-class UserUpdateView(UpdateView):
+class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     success_url = reverse_lazy('users:profile')
     form_class = UserForm
