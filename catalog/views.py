@@ -30,6 +30,27 @@ class HomeView(TemplateView):
         return context_data
 
 
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'catalog/product.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(id=self.kwargs.get('pk'))
+        return queryset
+
+    def get_context_data(self, *args, **kwargs):
+        context_data = super().get_context_data(*args, **kwargs)
+        product = Product.objects.get(id=self.kwargs.get('pk'))
+        context_data['product_name'] = product.product_name
+        context_data['product_content'] = product.product_content
+        context_data['title'] = 'Выбранный товар'
+        context_data['product_image'] = product.product_image
+        context_data['price_for_one'] = f'Цена: {product.price_for_one} руб.'
+
+        return context_data
+
+
 class ProductListView(ListView):
     model = Product
 

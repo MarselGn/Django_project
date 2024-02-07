@@ -15,6 +15,7 @@
             <div class="card-footer">
                  <a class="btn btn-link" href="{% url 'catalog:product_update' object.pk%}">изменить </a>
                  <a class="btn btn-sm btn-outline-danger" href="{% url 'catalog:product_delete' object.pk%}">удалить </a>
+                 <a href="{% url 'catalog:product' object.id %}" type="button" class="btn btn-sm btn-outline-secondary">К товару</a>
             </div>
         </div>
     </div>
